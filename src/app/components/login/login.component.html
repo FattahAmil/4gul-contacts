@@ -1,0 +1,46 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Connexion - 4GUL Contacts</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          class="form-control"
+          [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        >
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          Email requis et valide
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Mot de passe:</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          class="form-control"
+          [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        >
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+          Mot de passe requis
+        </div>
+      </div>
+      
+      <button type="submit" class="rounded-button" [disabled]="loginForm.invalid">
+        Se connecter
+      </button>
+      <button class="rounded-button" (click)="navigateTo()" >cree un compte </button>
+      
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </form>
+    
+  </div>
+</div>
+
+

@@ -1,0 +1,43 @@
+<div class="detail-container">
+  <div class="detail-header">
+    <button class="back-btn" (click)="goBack()">← Retour</button>
+    <h1>Détails du contact</h1>
+    <button class="edit-btn" (click)="editContact()">Modifier</button>
+  </div>
+  
+  <div *ngIf="contact" class="contact-detail-card">
+    <div class="contact-info">
+      <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+      
+      <div class="info-group">
+        <img *ngIf="contact.photo" [src]="contact.photo" alt="{{ contact.firstName }} {{ contact.lastName }}" class="contact-photo">
+      </div>
+
+      <div class="info-group">
+        <label>Email:</label>
+        <p>{{ contact.email }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Téléphone:</label>
+        <p>{{ contact.phone }}</p>
+      </div>
+      
+      <div class="info-group">
+        <label>Entreprise:</label>
+        <p>{{ contact.company }}</p>
+      </div>
+      
+      <div class="info-group" *ngIf="contact.notes">
+        <label>Notes:</label>
+        <p>{{ contact.notes }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!contact" class="loading">
+    Chargement...
+  </div>
+</div>
+
+

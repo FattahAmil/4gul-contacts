@@ -1,0 +1,77 @@
+<div class="form-container">
+  <div class="form-header">
+    <button class="back-btn" (click)="goBack()">← Retour</button>
+    <h1>{{ isEditMode ? 'Modifier le contact' : 'Nouveau contact' }}</h1>
+  </div>
+  
+  <div class="contact-form-card">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">Prénom *</label>
+          <input 
+            type="text" 
+            id="firstName" 
+            formControlName="firstName" 
+            class="form-control"
+            [class.error]="contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched"
+          >
+          <div *ngIf="contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched" class="error-message">
+            Le prénom est requis
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="lastName">Nom *</label>
+          <input 
+            type="text" 
+            id="lastName" 
+            formControlName="lastName" 
+            class="form-control"
+            [class.error]="contactForm.get('lastName')?.invalid && contactForm.get('lastName')?.touched"
+          >
+          <div *ngIf="contactForm.get('lastName')?.invalid && contactForm.get('lastName')?.touched" class="error-message">
+            Le nom est requis
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email" 
+          class="form-control"
+          [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+        >
+        <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
+          Un email valide est requis
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Téléphone *</label>
+        <input 
+          type="tel" 
+          id="phone" 
+          formControlName="phone" 
+          class="form-control"
+          [class.error]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+        >
+        <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
+          Le téléphone est requis
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="goBack()">Annuler</button>
+        <button type="submit" class="save-btn" [disabled]="contactForm.invalid">
+          {{ isEditMode ? 'Modifier' : 'Créer' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

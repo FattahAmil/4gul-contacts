@@ -1,0 +1,66 @@
+
+<div class="register-container">
+    <div class="register-card">
+      <h2>Connexion - 4GUL Contacts</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+       
+
+        <div class="form-group">
+            <label for="photo">url de photo:</label>
+            <input 
+              type="text" 
+              id="photo" 
+              formControlName="photo" 
+              class="form-control"
+              [class.error]="registerForm.get('photo')?.invalid && registerForm.get('photo')?.touched"
+            >
+            <div *ngIf="registerForm.get('photo')?.invalid && registerForm.get('photo')?.touched" class="error-message">
+                url photo requis et valide
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            class="form-control"
+            [class.error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+          >
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+            Email requis et valide
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Mot de passe:</label>
+          <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            class="form-control"
+            [class.error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+          >
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+            Mot de passe requis
+          </div>
+        </div>
+        
+        <button type="submit" class="rounded-button" [disabled]="registerForm.invalid">
+          Se connecter
+        </button>
+        <button class="rounded-button" (click)="navigateTo()" >login </button>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+      
+
+    </div>
+  </div>
+  
+  
+
+  
+

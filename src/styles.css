@@ -1,0 +1,113 @@
+/* Styles globaux pour l'application 4GUL Contacts */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Variables CSS pour la palette de couleurs */
+:root {
+  --primary-color: #6c63ff;
+  --secondary-color: #ff6584;
+  --background-color: #f5f7fa;
+  --text-color: #333;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --border-color: #e9ecef;
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Composants UI réutilisables */
+.rounded-button {
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.rounded-button:hover {
+  background-color: #5a52e8;
+  transform: translateY(-1px);
+}
+
+.rounded-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin: 15px 0;
+}
+
+/* Styles pour les formulaires */
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.form-control.error {
+  border-color: var(--secondary-color);
+}
+
+/* Styles pour les messages d'erreur */
+.error-message {
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Styles responsifs */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .card {
+    margin: 10px 0;
+    padding: 15px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
